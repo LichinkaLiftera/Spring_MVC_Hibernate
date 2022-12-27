@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All Users</title>
+    <style>
+        table, td, th {
+            border: 1px solid black;
+            border-collapse: collapse;
+            width: 500px;
+            padding: 12px;
+        }
+
+        th {
+            height: 50px;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<h1>All Users</h1>
+<div style="overflow-x: auto">
+    <table>
+        <thead>
+        <tr>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Profession</th>
+            <th>Age</th>
+            <th colspan="2">Operations</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="user : ${allUsers}">
+            <td th:text="${user.getName()}"> Name</td>
+            <td th:text="${user.getSurname()}"> Surname</td>
+            <td th:text="${user.getProfession()}"> Profession</td>
+            <td th:text="${user.getAge()}"> Age</td>
+            <td>
+                <form th:action="@{updateUser/{id}(id=${user.getId()})}" th:object="${user}">
+                    <button>Update</button>
+                </form>
+            </td>
+            <td>
+                <form th:action="@{deleteUser/{id}(id=${user.getId()})}" th:object="${user}">
+                    <input type="hidden" name="id" th:value="${user.getId()}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+<br>
+<form th:action="@{addUser}">
+    <button>Add User</button>
+</form>
+<br>
+<form th:action="@{/}">
+    <button>Home</button>
+</form>
+</body>
+</html>
