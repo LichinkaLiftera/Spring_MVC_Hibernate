@@ -2,18 +2,43 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Update user</title>
 </head>
+
+<style>
+    .button-group button {
+        background-color: #4CAF50;
+        border: 1px solid green;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        float: left;
+    }
+    .button-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .button-group button:not(:last-child) {
+        border-right: none;
+    }
+
+    .button-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
 <body>
 <h2>Update user</h2>
 <div>
-    <form th:action="@{updateUser}" th:object="${user}" method="post">
+    <form th:method="patch" th:action="@{/{id}(id=${user.getId()})}" th:object="${user}">
         <input type="hidden" th:field="*{id}" th:value="${user.getId()}">
         <fieldset>
             <legend>User data</legend>
             <p>
                 <label th:for="name">Name
-                    <input type="text" name="username" th:id="user" th:value="${user.getName()}">
+                    <input type="text" name="name" th:id="user" th:value="${user.getName()}">
                 </label>
             </p>
             <p>
@@ -36,9 +61,14 @@
     </form>
 </div>
 <br>
-
-<form action="/">
-    <button>Home</button>
-</form>
+<br>
+<div class="button-group">
+    <form action="/">
+        <button>Home</button>
+    </form>
+    <form action="allUsers">
+        <button>User List</button>
+    </form>
+</div>
 </body>
 </html>

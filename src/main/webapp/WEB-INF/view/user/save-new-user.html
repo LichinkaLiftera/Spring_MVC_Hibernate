@@ -4,10 +4,35 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+    .button-group button {
+        background-color: #4CAF50;
+        border: 1px solid green;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        float: left;
+    }
+    .button-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .button-group button:not(:last-child) {
+        border-right: none;
+    }
+
+    .button-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
 <body>
 <h2>Create new User</h2>
 <div>
-    <form th:method="patch" th:action="@{saveUser}" th:object="${user}">
+    <form th:method="post" th:action="@{saveUser}" th:object="${user}">
         <fieldset>
             <legend>User data</legend>
             <p>
@@ -35,9 +60,14 @@
     </form>
 </div>
 <br>
-
-<form action="/">
-    <button>Home</button>
-</form>
+<br>
+<div class="button-group">
+    <form action="/">
+        <button>Home</button>
+    </form>
+    <form action="allUsers">
+        <button>User List</button>
+    </form>
+</div>
 </body>
 </html>

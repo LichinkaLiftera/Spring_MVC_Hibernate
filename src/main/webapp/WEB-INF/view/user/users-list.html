@@ -3,20 +3,46 @@
 <head>
     <meta charset="UTF-8">
     <title>All Users</title>
-    <style>
-        table, td, th {
-            border: 1px solid black;
-            border-collapse: collapse;
-            width: 500px;
-            padding: 12px;
-        }
-
-        th {
-            height: 50px;
-            text-align: center;
-        }
-    </style>
 </head>
+
+<style>
+    table, td, th {
+        border: 1px solid black;
+        border-collapse: collapse;
+        width: 500px;
+        padding: 12px;
+    }
+
+    th {
+        height: 50px;
+        text-align: center;
+    }
+</style>
+
+<style>
+    .button-group button {
+        background-color: #4CAF50;
+        border: 1px solid green;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        float: left;
+    }
+    .button-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .button-group button:not(:last-child) {
+        border-right: none;
+    }
+
+    .button-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
 <body>
 <h1>All Users</h1>
 <div style="overflow-x: auto">
@@ -52,12 +78,14 @@
     </table>
 </div>
 <br>
-<form th:action="@{addUser}">
-    <button>Add User</button>
-</form>
 <br>
-<form th:action="@{/}">
-    <button>Home</button>
-</form>
+<div class="button-group">
+    <form action="/">
+        <button>Home</button>
+    </form>
+    <form action="addUser">
+        <button>Add User</button>
+    </form>
+</div>
 </body>
 </html>

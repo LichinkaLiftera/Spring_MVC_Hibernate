@@ -4,7 +4,47 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
+
+<style>
+    .button-group button {
+        background-color: #4CAF50;
+        border: 1px solid green;
+        color: white;
+        padding: 5px 10px;
+        cursor: pointer;
+        float: left;
+    }
+    .button-group:after {
+        content: "";
+        clear: both;
+        display: table;
+    }
+
+    .button-group button:not(:last-child) {
+        border-right: none;
+    }
+
+    .button-group button:hover {
+        background-color: #3e8e41;
+    }
+</style>
+
 <body>
+
+<h1>No users=(</h1>
+<br>
+<br>
+<div class="button-group">
+    <form action="/">
+        <button>Home</button>
+    </form>
+    <form action="allUsers">
+        <button>User List</button>
+    </form>
+    <form action="addUser">
+        <button>Add User</button>
+    </form>
+</div>
 
 </body>
 </html>

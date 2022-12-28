@@ -58,12 +58,11 @@ public class UsersController {
         return "redirect:/";
     }
     @GetMapping("updateUser/{id}")
-    public String updateUser(Model model, @PathVariable("id") int id){
-        User user = userService.readUser(id);
-        model.addAttribute("user",user);
+    public String updateUser(Model model, @PathVariable("id") int id){;
+        model.addAttribute("user",userService.readUser(id));
         return "user/updateUser-page";
     }
-    @PutMapping("updateUser")
+    @PatchMapping("/{id}")
     public String patchUser(@ModelAttribute("user") User user){
         userService.updateUser(user);
         return "redirect:allUsers";
